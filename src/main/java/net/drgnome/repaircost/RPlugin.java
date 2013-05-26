@@ -188,15 +188,18 @@ public class RPlugin extends JavaPlugin implements Runnable, Listener
             return;
         }
         Repairable meta = (Repairable)itemMeta;
+        Block block = event.getClickedBlock();
+        int key = Shape.apply(player.getWorld(), block.getX(), block.getY(), block.getZ());
+        if(key == -1)
+        {
+            return;
+        }
         if(meta.getRepairCost() == 0)
         {
+            Util.sendMessage(player, "Your tool is as new as it can be.", ChatColor.YELLOW);
             return;
         }
-        Block block = event.getClickedBlock();
-        if(!Shape.apply(player.getWorld(), block.getX(), block.getY(), block.getZ()))
-        {
-            return;
-        }
+        Shape.remove(key, player.getWorld(), block.getX(), block.getY(), block.getZ());
         meta.setRepairCost(0);
         item.setItemMeta(itemMeta);
         player.setItemInHand(item);

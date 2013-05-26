@@ -103,17 +103,17 @@ public class Shape
         }
     }
     
-    public static boolean apply(World world, int x0, int y0, int z0)
+    public static int apply(World world, int x0, int y0, int z0)
     {
-        for(int[] coords : _keys)
+        for(int i = 0; i < _keys.size(); i++)
         {
+            int[] coords = _keys.get(i);
             if(check(world, x0 - coords[0], y0 - coords[1], z0 - coords[2]))
             {
-                remove(world, x0 - coords[0], y0 - coords[1], z0 - coords[2]);
-                return true;
+                return i;
             }
         }
-        return false;
+        return -1;
     }
     
     private static boolean check(World world, int x0, int y0, int z0)
@@ -138,8 +138,12 @@ public class Shape
         return true;
     }
     
-    private static void remove(World world, int x0, int y0, int z0)
+    public static void remove(int key, World world, int x0, int y0, int z0)
     {
+        int[] coords = _keys.get(key);
+        x0 -= coords[0];
+        y0 -= coords[1];
+        z0 -= coords[2];
         for(int y = 0; y < _blocks.length; y++)
         {
             for(int z = 0; z < _blocks[y].length; z++)
