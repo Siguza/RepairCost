@@ -1,4 +1,4 @@
-GodRepair
+RepairCost
 =========
 
-Bukkit Plugin "GodRepair"
+Bukkit Plugin "RepairCost"

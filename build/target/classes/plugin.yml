@@ -1,0 +1,22 @@
+name: RepairCost
+main: net.drgnome.repaircost.RPlugin
+version: 1.0.0
+author: Siguza
+commands:
+  repaircost:
+    aliases: [rcost]
+    usage: "/repaircost"
+permissions:
+  rcost.use:
+    description: "Allows you to use RepairCost"
+  rcost.cheat:
+    description: "Allows you to reset items via command"
+  rcost.admin:
+    description: "Full RepairCost access"
+    default: op
+    children:
+      rcost.use: true
+      rcost.cheat: true
+      rcost.update: true
+  rcost.update:
+    description: "Notifies you of new RepairCost versions"
