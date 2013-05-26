@@ -59,6 +59,7 @@ public class Shape
                 if(l.equals("-"))
                 {
                     list.add(tmp.toArray(new ShapeBlock[0][]));
+                    tmp.clear();
                     continue;
                 }
                 String[] s = l.split("\\|");
